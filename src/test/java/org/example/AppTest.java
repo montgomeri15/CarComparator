@@ -19,6 +19,7 @@ public class AppTest {
         List<Car> carsList = Arrays.asList(toyota, mazda, opel, acura);
         Collections.sort(carsList);
 
+        assertThat(carsList.size()).isEqualTo(4);
         assertThat(carsList).isNotEmpty()
                 .contains(toyota, mazda, opel, acura)
                 .contains(opel, Index.atIndex(0))
@@ -38,6 +39,9 @@ public class AppTest {
         Set<Car> carsByEngineSortedSet = new TreeSet<>(Comparator.comparing(Car::getEngineCapacity));
         carsByEngineSortedSet.addAll(carsList);
 
-        assertThat(carsByEngineSortedSet).isNotEmpty();
+        assertThat(carsByEngineSortedSet.size()).isEqualTo(4);
+        assertThat(carsByEngineSortedSet).isNotEmpty()
+                .contains(toyota, mazda, opel, acura);
+        assertThat(carsByEngineSortedSet.stream().findFirst()).contains(acura);
     }
 }
