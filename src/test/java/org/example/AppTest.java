@@ -42,6 +42,7 @@ public class AppTest {
         assertThat(carsByEngineSortedSet.size()).isEqualTo(4);
         assertThat(carsByEngineSortedSet).isNotEmpty()
                 .contains(toyota, mazda, opel, acura);
-        assertThat(carsByEngineSortedSet.stream().findFirst()).contains(acura);
+        assertThat(((TreeSet<Car>) carsByEngineSortedSet).first()).isEqualTo(acura);
+        assertThat(((TreeSet<Car>) carsByEngineSortedSet).last()).isEqualTo(opel);
     }
 }
